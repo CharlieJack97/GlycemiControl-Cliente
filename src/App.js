@@ -3,8 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
 import { getLoggedIn, logout } from "./services/auth";
-import routes from "./config/routes";
 import * as USER_HELPERS from "./utils/userToken";
+import HomePage from "./pages/HomePage";
+import LogIn from "./pages/LogIn";
+import Signup from "./pages/Signup";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -53,9 +55,17 @@ export default function App() {
     <div className="App">
       <Navbar handleLogout={handleLogout} user={user} />
       <Routes>
-        {routes({ user, authenticate, handleLogout }).map((route) => (
+        {/*{routes({ user, authenticate, handleLogout }).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
-        ))}
+        ))}*/}
+        <Route path="/" element={<HomePage />} />
+        <Route
+         path="/auth/signup"
+         element={<Signup authenticate={authenticate} />}
+        />
+        <Route
+         path="/auth/login"
+         element={<LogIn authenticate={authenticate}/>} />
       </Routes>
     </div>
   );
