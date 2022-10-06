@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Form } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
 import { getLoggedIn, logout } from "./services/auth";
@@ -7,6 +7,11 @@ import * as USER_HELPERS from "./utils/userToken";
 import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
 import Signup from "./pages/Signup";
+import Error404 from "./components/Error";
+import About from "./pages/About";
+import TracingList from "./pages/TracingList";
+import TracingDetails from "./pages/TracingDetails";
+import EditTracking from "./pages/EditTracking";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -61,11 +66,16 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route
          path="/auth/signup"
-         element={<Signup authenticate={authenticate} />}
+         element={<Signup authenticate={authenticate}/>}
         />
         <Route
          path="/auth/login"
          element={<LogIn authenticate={authenticate}/>} />
+         <Route path="*" element={<Error404/>}/>
+         <Route path="/about" element={<About/>}></Route>
+         <Route path="/tracing" element={<TracingList/>}/>
+         <Route path="/tracing/:id" element={<TracingDetails/>} /> 
+         <Route path="/tracing/edit/:id" element={ <EditTracking/> } /> 
       </Routes>
     </div>
   );

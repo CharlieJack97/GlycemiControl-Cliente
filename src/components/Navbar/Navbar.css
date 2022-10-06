@@ -1,49 +1,54 @@
 nav {
   display: flex;
-  padding: 1em;
+  padding: 0.3em;
   justify-content: space-between;
   flex-wrap: wrap;
   font-weight: 600;
+  margin: 5px;
+  background: #1a202c5d;
+
 }
 
 .logo{
   width: 15%;
+  padding: 0.5em ;
 }
 
 .logo img{width: 190px;}
 
-.authLink {
-  color: #ffb9b8;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
+.iconTheme {
+  margin-right: 10px;
 }
 
-.authLink + .authLink {
-  padding: 1em;
+.authLink {
+  color: #ff7c7a;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+  padding: 0.5em;
+  margin: 15px;
 }
 
 .authLink:hover {
   color: #ff423d;
 }
 
-.nav-logoutbtn {
+.nav-btn {
   font-family: inherit;
   font-weight: inherit;
   padding: 0.5em 1em;
   margin-left: 1em;
-  background-color: #5595ff;
-  box-shadow: 0 0 5px 0 aliceblue;
+  background-color: #ff7c7a;
+  box-shadow: 0 0 15px 0 #ff5e5b;
   border: none;
-  border-radius: 2px;
+  border-radius: 5px;
   cursor: pointer;
-  color: #e3f2ff;
   transition: all 0.2s ease-in-out;
   position: sticky;
   top: 0;
 }
 
-.nav-logoutbtn:hover {
+.nav-btn:hover {
   transform: scale(1.05);
-  background-color: #d13e3e;
+  background-color: #ff423d;
 }
 

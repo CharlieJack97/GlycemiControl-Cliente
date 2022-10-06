@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { login } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import "./Signup";
-import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import {
   Flex,
@@ -46,7 +45,7 @@ export default function LogIn({ authenticate }) {
       }
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
+      navigate("/");
     });
   }
 
@@ -55,7 +54,7 @@ return (
     minH={'100vh'}
     align={'center'}
     justify={'center'}
-    bg={useColorModeValue('gray.50', 'gray.800')}>
+    bg={useColorModeValue('white', 'gray.800')}>
     <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
       <Stack align={'center'}>
         <Heading fontSize={'4xl'}>Sign in to your account</Heading>
@@ -64,7 +63,7 @@ return (
       </Stack>
       <Box
         rounded={'lg'}
-        bg={useColorModeValue('white', 'gray.700')}
+        bg={useColorModeValue('gray.50', 'gray.700')}
         boxShadow={'lg'}
         p={8}>
         <Stack spacing={4}>
@@ -74,7 +73,7 @@ return (
                 id="input-username"
                 type="text"
                 name="username"
-                placeholder="username"
+                placeholder="Charlie"
                 value={username}
                 onChange={handleInputChange}
                 required
@@ -93,19 +92,25 @@ return (
                 minLength="8"
               />
           </FormControl>
+          {error && (
+          <Stack className="error-block">
+            <Text>There was an error submiting the form:</Text>
+            <Text>{error.message}</Text>
+          </Stack>
+          )}
           <Stack spacing={10}>
             <Stack
-              direction={{ base: 'column', sm: 'row' }}
+              direction={{ base: 'column',}}
               align={'start'}
               justify={'space-around'}>
-              <Checkbox>Remember me</Checkbox>
+              <Checkbox colorScheme='red' isRequired>Remember me</Checkbox>
             </Stack>
             <Button
+              type="submit"
+              size="lg"
               bg={'#ff5e5b'}
               color={'white'}
-              _hover={{
-                bg: '#ff423d',
-              }}>
+              _hover={{ bg: '#ff423d' }}>
               Sign in
             </Button>
           </Stack>

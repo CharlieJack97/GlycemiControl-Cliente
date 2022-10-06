@@ -2,31 +2,30 @@ import { Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import Login from "../pages/LogIn";
 import Signup from "../pages/Signup";
-import ProtectedPage from "../pages/ProtectedPage";
-import * as PATHS from "../utils/paths";
+import About from "../pages/About";
 
 const routes = (props) => {
   const { user } = props;
   return [
     {
-      path: PATHS.HOMEPAGE,
+      path: "/",
       element: <HomePage {...props} />,
     },
     {
-      path: PATHS.SIGNUPPAGE,
+      path: "/auth/signup",
       element: <Signup {...props} />,
     },
 
     {
-      path: PATHS.LOGINPAGE,
+      path: "/auth/login",
       element: <Login {...props} />,
     },
     {
-      path: PATHS.PROTECTEDPAGE,
+      path: "/about",
       element: user ? (
-        <ProtectedPage {...props} />
+        <About {...props} />
       ) : (
-        <Navigate to={PATHS.LOGINPAGE} replace />
+        <Navigate to={"/auth/login"} replace />
       ),
     },
   ];
