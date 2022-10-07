@@ -4,26 +4,26 @@ import { useNavigate } from "react-router-dom";
 import "./Signup";
 import * as USER_HELPERS from "../utils/userToken";
 import {
-  Flex,
   Box,
-  FormControl,
   FormLabel,
   Input,
   Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
   Text,
   useColorModeValue,
+  Container,
+  SimpleGrid,
 } from '@chakra-ui/react';
+import ImageBackground from '../images/imageBackground.png'
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
-    username: "",
+    email: "",
     password: "",
   });
-  const { username, password } = form;
+  const { email, password } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ export default function LogIn({ authenticate }) {
   function handleFormSubmission(event) {
     event.preventDefault();
     const credentials = {
-      username,
+      email,
       password,
     };
     login(credentials).then((res) => {
@@ -49,74 +49,93 @@ export default function LogIn({ authenticate }) {
     });
   }
 
-return (
-  <Flex
-    minH={'100vh'}
-    align={'center'}
-    justify={'center'}
-    bg={useColorModeValue('white', 'gray.800')}>
-    <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-      <Stack align={'center'}>
-        <Heading fontSize={'4xl'}>Sign in to your account</Heading>
-        <Text fontSize={'lg'} color={'gray.600'}>
-        </Text>
-      </Stack>
-      <Box
-        rounded={'lg'}
-        bg={useColorModeValue('gray.50', 'gray.700')}
-        boxShadow={'lg'}
-        p={8}>
-        <Stack spacing={4}>
-          <FormControl onSubmit={handleFormSubmission} id="username">
-            <FormLabel>Username</FormLabel>
-              <Input
-                id="input-username"
-                type="text"
-                name="username"
-                placeholder="Charlie"
-                value={username}
-                onChange={handleInputChange}
-                required
-              />
-          </FormControl>
-          <FormControl onSubmit={handleFormSubmission} id="password">
-            <FormLabel>Password</FormLabel>
-              <Input
-                id="input-password"
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={password}
-                onChange={handleInputChange}
-                required
-                minLength="8"
-              />
-          </FormControl>
-          {error && (
-          <Stack className="error-block">
-            <Text>There was an error submiting the form:</Text>
-            <Text>{error.message}</Text>
+  return (
+    <Box position={'relative'}>
+      <Container
+        as={SimpleGrid}
+        maxW={'7xl'}
+        display="gridColumn"
+        columns={{ md: 2 }}
+        spacing={{ base: 10, lg: 32 }}
+        py={{ base: 10, sm: 20, lg: 32 }}>
+        <Stack
+         spacing={{ base: 10, md: 20 }} 
+         h='561' w='400' 
+         bgRepeat={'no-repeat'} 
+         backgroundImage={`url(${ImageBackground})`}/>
+        <Stack m={'60px'}>
+          <Stack  spacing={4}>
+            <Heading 
+            lineHeight={1.1}
+            fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>
+            Sign in
+            <Text
+            as={'span'}
+            bgGradient="linear(to-r, red.400,pink.400)"
+            bgClip="text">!
+            </Text>
+            </Heading>
           </Stack>
-          )}
-          <Stack spacing={10}>
-            <Stack
-              direction={{ base: 'column',}}
-              align={'start'}
-              justify={'space-around'}>
-              <Checkbox colorScheme='red' isRequired>Remember me</Checkbox>
+          <Box
+            rounded={'lg'}
+            bg={useColorModeValue('gray.50', 'gray.700')}
+            boxShadow={'lg'}
+            p={8}>
+            <Stack spacing={4}>
+              <form onSubmit={handleFormSubmission}>
+                <FormLabel>Email</FormLabel>
+                  <Input
+                    type="text"
+                    name="email"
+                    placeholder="example@example.com"
+                    value={email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                <FormLabel>Password</FormLabel>
+                  <Input
+                    type="password"
+                    name="password"
+                    placeholder="********"
+                    value={password}
+                    onChange={handleInputChange}
+                    required
+                    minLength="8"
+                  />
+                  {error && (
+                  <Stack className="error-block">
+                    <Text>There was an error submiting the form:</Text>
+                    <Text>{error.message}</Text>
+                  </Stack>
+                  )}
+
+                <Stack spacing={10}>
+                  <Stack
+                    direction={{ base: 'column',}}
+                    align={'start'}
+                    justify={'space-around'}>
+                    <Checkbox colorScheme='red' isRequired>Remember me</Checkbox>
+                  </Stack>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    bg={'#ff5e5b'}
+                    color={'white'}
+                    _hover={{ bg: '#ff423d' }}>
+                    Sign in
+                  </Button>
+                </Stack>
+              {/*{error && (
+                <div className="error-block">
+                  <p>There was an error submiting the form:</p>
+                  <p>{error.message}</p>
+                </div>
+              )}*/}
+              </form>
             </Stack>
-            <Button
-              type="submit"
-              size="lg"
-              bg={'#ff5e5b'}
-              color={'white'}
-              _hover={{ bg: '#ff423d' }}>
-              Sign in
-            </Button>
-          </Stack>
+          </Box>
         </Stack>
-      </Box>
-    </Stack>
-  </Flex>
+      </Container>
+    </Box>
   );
 }

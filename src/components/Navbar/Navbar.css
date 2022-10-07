@@ -5,8 +5,6 @@ nav {
   flex-wrap: wrap;
   font-weight: 600;
   margin: 5px;
-  background: #1a202c5d;
-
 }
 
 .logo{
@@ -24,8 +22,8 @@ nav {
   color: #ff7c7a;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
-  padding: 0.5em;
-  margin: 15px;
+  padding: 0em;
+  margin: 5px;
 }
 
 .authLink:hover {

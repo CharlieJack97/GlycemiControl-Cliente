@@ -13,6 +13,7 @@ import TracingList from "./pages/TracingList";
 import TracingDetails from "./pages/TracingDetails";
 import EditTracking from "./pages/EditTracking";
 
+
 export default function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

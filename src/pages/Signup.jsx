@@ -1,39 +1,40 @@
 import React, { useState } from "react";
 import { signup } from "../services/auth";
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as USER_HELPERS from "../utils/userToken";
 import {
-  Flex,
   Box,
-  FormControl,
   FormLabel,
   Input,
-  InputGroup,
-  InputRightElement,
   Stack,
   Button,
   Heading,
+  Text,
   useColorModeValue,
+  Container,
+  SimpleGrid,
+  InputRightElement,
+  InputGroup,
   InputRightAddon,
   HStack,
 } from '@chakra-ui/react';
-
+import ImageBackground from '../images/imageBackground.png'
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 
 export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
+    email: '',
+    weight: '',
+    age: '',
     password: "",
-    email: "",
-    weight: "",
-    age: ""
   });
 
-  const { username, password, email, weight, age } = form;
+  const { username, email, weight, age, password } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
-  
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -41,14 +42,13 @@ export default function Signup({ authenticate }) {
   }
 
   function handleFormSubmission(event) {
-
     event.preventDefault();
     const credentials = {
       username,
-      password,
       email,
       weight,
-      age
+      age,
+      password,
     };
     signup(credentials).then((res) => {
       if (!res.status) {
@@ -65,126 +65,132 @@ export default function Signup({ authenticate }) {
     });
   }
 
-    return (
-      <div>
-        <form onSubmit={handleFormSubmission}> 
-          <Flex
-            minH={'100vh'}
-            align={'center'}
-            justify={'center'}
-            bg={useColorModeValue('white', 'gray.800')}>
-            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-              <Stack align={'center'}>
-                <Heading fontSize={'4xl'} textAlign={'center'}>
-                  Sign up
-                </Heading>
-              </Stack>
-              <Box
-                rounded={'lg'}
-                bg={useColorModeValue('gray.50', 'gray.700')}
-                boxShadow={'lg'}
-                p={8}>
-                <Stack spacing={4}>
-                    <Box>
-                      <FormControl onSubmit={handleFormSubmission} isRequired>
-                        <FormLabel>Username</FormLabel>
-                        <Input
-                          id="input-username"
-                          type="username"
-                          name="username"
-                          placeholder="Enter your Username"
-                          value={username}
-                          onChange={handleInputChange}
-                          required
-                          unique
-                        />
-                      </FormControl>
-                    </Box>
-                  <FormControl onSubmit={handleFormSubmission} id="email" isRequired>
-                    <FormLabel>Email address</FormLabel>
+  return (
+    <Box>
+      <Container
+        as={SimpleGrid}
+        maxW={'7xl'}
+        display="gridColumn"
+        columns={{ md: 2 }}
+        spacing={{ base: 10, lg: 32 }}
+        py={{ base: 10, sm: 20, lg: 32 }}>
+        <Stack
+         spacing={{ base: 10, md: 20 }} 
+         h='561' w='400' 
+         bgRepeat={'no-repeat'} 
+         backgroundImage={`url(${ImageBackground})`}/>
+        <Stack m={'60px'}>
+          <Stack  spacing={4}>
+            <Heading 
+            lineHeight={1.1}
+            fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>
+            Sign Up
+            <Text
+            as={'span'}
+            bgGradient="linear(to-r, red.400,pink.400)"
+            bgClip="text">!
+            </Text>
+            </Heading>
+          </Stack>
+          <Box
+            rounded={'lg'}
+            bg={useColorModeValue('gray.50', 'gray.700')}
+            boxShadow={'lg'}
+            p={8}>
+            <Stack spacing={4}>
+              <form onSubmit={handleFormSubmission} className="auth__form">
+                <FormLabel>Username</FormLabel>
+                <Input
+                  type="text"
+                  name="username"
+                  placeholder="Enter your Username"
+                  value={username}
+                  onChange={handleInputChange}
+                  required
+                  unique
+                  mb={5}
+                />
+                <FormLabel>Email address</FormLabel>
                     <Input
                       type="email"
-                      id="input-email"
                       name="email"
                       value={email}
                       onChange={handleInputChange}
                       required
                       unique
-                      placeholder="example@gmail.com"
+                      placeholder="example@example.com"
+                      mb={5}
                     />
-                  </FormControl>
-                  <FormControl onSubmit={handleFormSubmission} id="password" isRequired>
-                    <FormLabel>Password</FormLabel>
-                    <InputGroup>
-                    <Input
-                        pr='4.5rem'
-                        type={show ? 'text' : 'password'}
-                        placeholder='********'
-                        id="input-password"
-                        name="password"
-                        value={password}
-                        onChange={handleInputChange}
-                        required
-                        minLength="8"
-                      />
-                      <InputRightElement width='4.5rem'>
-                        <Button h='1.75rem' size='sm' onClick={handleClick}>
-                          {show ? 'Hide' : 'Show'}
-                        </Button>
-                      </InputRightElement>
-                    </InputGroup>
-                  </FormControl>
-                  <HStack>
-                    <Box>
-                    <FormControl>
-                      <FormLabel onSubmit={handleFormSubmission} isRequired>Weight</FormLabel>
-                      <InputGroup>
-                        <Input
-                         type={'number'} 
-                         name={"weight"}
-                         required
-                         value={weight}
-                         onChange={handleInputChange}
-                         placeholder={'0'}
-                          />
-                        <InputRightAddon children={'Kg'}/>
-                      </InputGroup>
-                      </FormControl>
-                    </Box>
-                    <Box>
-                      <FormControl>
-                        <FormLabel onSubmit={handleFormSubmission} isRequired>Age</FormLabel>
-                        <InputGroup>
-                          <Input
-                           type={'number'}
-                           name={"age"} 
-                           required 
-                           onChange={handleInputChange}
-                           placeholder={'0'}
-                           value={age}
-                           />
-                           
-                        </InputGroup>
-                      </FormControl>
-                    </Box>
-            </HStack>
-                  <Stack spacing={10} pt={2}>
-                    <Button
-                      type="submit"
-                      size="lg"
-                      bg={'#ff5e5b'}
-                      color={'white'}
-                      _hover={{
-                        bg: '#ff423d',
-                      }}>
-                      Sign up
+                <FormLabel>Password</FormLabel>
+                <InputGroup>
+                  <Input
+                    type={show ? 'text' : 'password'}
+                    name="password"
+                    placeholder="********"
+                    value={password}
+                    onChange={handleInputChange}
+                    required
+                    mb={5}
+                    minLength="8"
+                  />
+                  {error && (
+                    <div className="error-block">
+                      <p>There was an error submiting the form:</p>
+                      <p>{error.message}</p>
+                    </div>
+                  )}
+                  <InputRightElement width='4.5rem'>
+                    <Button h='1.75rem' size='sm' onClick={handleClick}>
+                      {show ? <ViewOffIcon/> : <ViewIcon/> }
                     </Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Stack>
-          </Flex>
-        </form>
-      </div>
-    );
-    }
+                  </InputRightElement>
+                </InputGroup>
+                <HStack>
+                  <FormLabel isRequired>Weight</FormLabel>
+                  <InputGroup>
+                    <Input
+                      type={'number'} 
+                      name={"weight"}
+                      required
+                      value={weight}
+                      onChange={handleInputChange}
+                      mt={5}
+                      placeholder={'0'}
+                      ml={-2}
+                      
+                    />
+                    <InputRightAddon mt={5} mr={2} children={'Kg'}/>
+                  </InputGroup>
+                  <FormLabel isRequired >Age</FormLabel>
+                  <InputGroup>
+                    <Input
+                     type={'number'}
+                     name={"age"} 
+                     required 
+                     onChange={handleInputChange}
+                     placeholder={'0'}
+                     value={age}
+                     mt={5}
+                    />  
+                  </InputGroup>
+                </HStack>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  bg={'#ff5e5b'}
+                  color={'white'}
+                  _hover={{
+                    bg: '#ff423d',
+                  }}
+                  mt={5}>
+                  Sign up
+                </Button>
+              </form>
+            </Stack> 
+          </Box>
+        </Stack>
+      </Container>        
+    </Box>
+  );
+}
