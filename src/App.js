@@ -72,8 +72,8 @@ export default function App() {
         <Route
          path="/auth/login"
          element={<LogIn authenticate={authenticate}/>} />
-         <Route path="*" element={<Error404/>}/>
-         <Route path="/about" element={<About/>}></Route>
+         <Route path="*" element={<Error404/>} />
+         <Route path="/about" element={<About/>} />
          <Route path="/tracing" element={<TracingList/>}/>
          <Route path="/tracing/:id" element={<TracingDetails/>} /> 
          <Route path="/tracing/edit/:id" element={ <EditTracking/> } /> 

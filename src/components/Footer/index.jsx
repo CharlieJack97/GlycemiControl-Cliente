@@ -1,13 +1,7 @@
 import {
     Box,
-    Container,
-    Link,
-    SimpleGrid,
-    Stack,
     Text,
     Flex,
-    Tag,
-    Image,
     useColorModeValue,
   } from '@chakra-ui/react';
   

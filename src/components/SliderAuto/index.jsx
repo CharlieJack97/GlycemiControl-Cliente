@@ -7,9 +7,9 @@ import {
   Heading,
   Text,
   Container,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import Slider from 'react-slick';
-import './index.css'
 
 import SliderImg1 from '../../images/slider1.png'
 import SliderImg2 from '../../images/slider2.png'
@@ -119,7 +119,6 @@ export default function SliderAuto() {
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
             backgroundImage={`url(${card.image})`}>
-            {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
               <Stack
                 spacing={6}
@@ -128,11 +127,28 @@ export default function SliderAuto() {
                 position="absolute"
                 top="50%"
                 transform="translate(0, -50%)">
-                <Box className='bgText'>
-                  <Heading color='white' fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
+                <Box 
+                  className='bgText' 
+                  bg='#1a202c5d' 
+                  p='20px' 
+                  rounded='20px'>
+                  <Heading 
+                    color='white' 
+                    fontSize={{
+                       base: '3xl', 
+                       md: '4xl', 
+                       lg: '5xl' 
+                       }}>
                     {card.title}
                   </Heading>
-                  <Text fontSize={{ base: 'md', lg: 'lg' }} color='white' fontStyle='italic' shadow='-moz-initial'>
+                  <Text
+                   fontSize={{
+                     base: 'md', 
+                     lg: 'lg' 
+                     }} 
+                     color='gray.100'
+                     fontStyle='italic' 
+                     shadow='-moz-initial'>
                     <strong>{card.text}</strong>
                   </Text>
                 </Box>

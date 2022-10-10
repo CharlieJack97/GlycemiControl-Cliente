@@ -78,7 +78,7 @@ export default function LogIn({ authenticate }) {
           </Stack>
           <Box
             rounded={'lg'}
-            bg={useColorModeValue('gray.50', 'gray.700')}
+            bg={useColorModeValue('gray.200', 'gray.700')}
             boxShadow={'lg'}
             p={8}>
             <Stack spacing={4}>

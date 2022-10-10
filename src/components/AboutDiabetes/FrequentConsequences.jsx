@@ -1,4 +1,4 @@
-import { Box, Heading, li, Text } from '@chakra-ui/react'
+import { Box, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 
 const FrequentConsequences = () => {

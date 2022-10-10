@@ -4,7 +4,8 @@ import {
    Tab, 
    TabPanels, 
    TabPanel, 
-   Heading }
+   Heading, 
+   Box}
     from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import React from 'react'
@@ -17,35 +18,35 @@ import Types from '../components/AboutDiabetes/Types'
 
 const About = () => {
   return (
-    <div >
-        <Heading textAlign={'center'} m={'50px'}><u>About my Illness</u></Heading>
-        <Tabs align='center' display={''} variant='soft-rounded' colorScheme='red'>
-      <TabList>
-        <Tab>What is the diabetes?</Tab>
-        <Tab>Types</Tab>
-        <Tab>Frequent Consequences</Tab>
-        <Tab>Reduce Diabetes Burden</Tab>
-        <Tab>Know More{' '}<ExternalLinkIcon mx={'2px'}/></Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>
-          <Introduction/>
-        </TabPanel>
-        <TabPanel>
-          <Types/>
-        </TabPanel>
-        <TabPanel>
-          <FrequentConsequences/>
-        </TabPanel>
-        <TabPanel>
-          <ReduceDiabetesBurden/>
-        </TabPanel>
-        <TabPanel>
-          <ExternalLink></ExternalLink>
-        </TabPanel>
-      </TabPanels>
-</Tabs>
-    </div>
+    <Box marginBottom={10}>
+      <Heading textAlign={'center'} m={'50px'}><u>About my Illness</u></Heading>
+      <Tabs align='center' display={''} variant='soft-rounded' colorScheme='red'>
+        <TabList>
+          <Tab>What is the diabetes?</Tab>
+          <Tab>Types</Tab>
+          <Tab>Frequent Consequences</Tab>
+          <Tab>Reduce Diabetes Burden</Tab>
+          <Tab>Know More{' '}<ExternalLinkIcon mx={'2px'}/></Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <Introduction/>
+          </TabPanel>
+          <TabPanel>
+            <Types/>
+          </TabPanel>
+          <TabPanel>
+            <FrequentConsequences/>
+          </TabPanel>
+          <TabPanel>
+            <ReduceDiabetesBurden/>
+          </TabPanel>
+          <TabPanel>
+            <ExternalLink/>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </Box>
   )
 }
 

@@ -11,32 +11,37 @@ const Navbar = (props) => {
        <div className="logo"><a href="/" title="Home"><img src="./logo2.png"/></a></div>
        <div>
          <ColorModeSwitcher colorScheme='red' className="iconTheme"/>
+         <Link to={'/'} className="authLink">
+          <Button colorScheme='red' variant='ghost'>
+            Home
+          </Button>
+         </Link>
+         <Link to={'/about'} className="authLink">
+          <Button colorScheme='red' variant='ghost'>
+            MyIllness
+          </Button>
+         </Link>
          {props.user ? (
            <>
-             <Link to={'/about'} className="authLink">
-             <Button colorScheme='red' variant='ghost'>
-               About my Illness
-             </Button>
-             </Link>
              <Link to={'/tracing'} className="authLink">
-             <Button colorScheme='red' variant='ghost'>
-               My Tracking
-             </Button>
+              <Button colorScheme='red' variant='ghost'>
+                Tracking
+              </Button>
              </Link>
-             <Button className="nav-btn" onClick={props.handleLogout}>
-               Logout
-             </Button>
+              <Button className="nav-btn" onClick={props.handleLogout}>
+                Logout
+              </Button>
            </>
          ) : (
            <>
              <Link to={'/auth/signup'} className="authLink">
-             <Button colorScheme='red' variant='ghost'>
-               Signup
+              <Button colorScheme='red' variant='ghost'>
+                Signup
               </Button>
              </Link>
              <Link to={'/auth/login'} className="authLink">
-             <Button colorScheme='red' variant='ghost'>
-               Log In
+              <Button colorScheme='red' variant='ghost'>
+                Log In
               </Button>
              </Link>
            </>

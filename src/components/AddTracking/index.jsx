@@ -52,7 +52,7 @@ export default function AddTracking(props) {
         <GridItem colSpan={1}>
           <VStack alignItems="flex-start" spacing="20px">
             <chakra.h1 fontSize="3xl" fontWeight="700">
-            <u>Glycemic profile record</u>
+              <u>Glycemic profile record</u>
             </chakra.h1>
             <br/>
             <br/>
@@ -64,25 +64,27 @@ export default function AddTracking(props) {
         </GridItem>
         <GridItem>
           <Flex>
-            <FormControl onSubmit={handleSubmit}>
-              <FormLabel>Title:</FormLabel>
-                <Input
-                  type="text"
-                  name="title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-              <FormLabel>Description:</FormLabel>
-                <Textarea
-                  type="text"
-                  name="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-                <Button m={'20px'} type="submit" colorScheme="red" size="md">
-                  Add Tracking
-                </Button>
-            </FormControl>
+            <form onSubmit={handleSubmit}>
+              <FormControl>
+                <FormLabel>Title:</FormLabel>
+                  <Input
+                    type="text"
+                    name="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                <FormLabel>Description:</FormLabel>
+                  <Textarea
+                    type="text"
+                    name="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                  <Button m={'20px'} type="submit" colorScheme="red" size="md">
+                    Add Tracking
+                  </Button>
+                </FormControl>
+            </form>
           </Flex>
         </GridItem>
       </Grid>
