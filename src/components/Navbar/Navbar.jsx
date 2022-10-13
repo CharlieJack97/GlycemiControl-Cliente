@@ -37,12 +37,12 @@ const Navbar = (props) => {
                 Tracing
               </Button>
              </Link>
-            <Menu>
+            <Menu >
               <MenuButton className="authLink" as={Button} colorScheme='red'>
                 {props.user?.username}
               </MenuButton>
               <MenuList>
-                  <MenuItem><button onClick={props.handleLogout}>Logout</button></MenuItem>
+                <MenuItem onClick={props.handleLogout}>Logout</MenuItem>
               </MenuList>
             </Menu>
           </>

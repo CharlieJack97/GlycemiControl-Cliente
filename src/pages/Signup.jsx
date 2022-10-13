@@ -60,7 +60,7 @@ export default function Signup({ authenticate }) {
   }
 
   return (
-    <Box>
+    <Box position={'relative'}>
       <Container
         as={SimpleGrid}
         maxW={'7xl'}
@@ -125,9 +125,16 @@ export default function Signup({ authenticate }) {
                     value={password}
                     onChange={handleInputChange}
                     required
-                    mb={5}
+                    //mb={5}
                     minLength="8"
                   />
+                  <InputRightElement width='4.5rem'>
+                    <Button h='1.75rem' size='sm' onClick={handleClick}>
+                      {show ? <ViewOffIcon/> : <ViewIcon/> }
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+                <br/>
                   {error && (
                   <Stack align={'center'}
                    fontFamily='Arial' 
@@ -135,20 +142,14 @@ export default function Signup({ authenticate }) {
                    mb={5} 
                    bg="#ff5e5b" 
                    rounded='10px' 
-                   pt={3}
-                   pb={3}>
+                   p={3}
+                   >
                     <Text color={'white'}>There was an error submiting the form:</Text>
                     <Text color={'red'} fontSize={18}>
                       <strong>{error.message}</strong>
                     </Text>
                   </Stack>
                   )}
-                  <InputRightElement width='4.5rem'>
-                    <Button h='1.75rem' size='sm' onClick={handleClick}>
-                      {show ? <ViewOffIcon/> : <ViewIcon/> }
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
                 <Button
                   type="submit"
                   size="lg"

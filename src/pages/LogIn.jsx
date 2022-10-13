@@ -104,23 +104,6 @@ export default function LogIn({ authenticate }) {
                     minLength="8"
                   />
                   <br/>
-
-                  {error && (
-                  <Stack align={'center'}
-                   fontFamily='Arial' 
-                   mt={5} 
-                   mb={5} 
-                   bg="#ff5e5b" 
-                   rounded='10px' 
-                   pt={3}
-                   pb={3}>
-                    <Text color={'white'}>There was an error submiting the form:</Text>
-                    <Text color={'red'} fontSize={18}>
-                      <strong>{error.message}</strong>
-                    </Text>
-                  </Stack>
-                  )}
-                    
                 <Stack spacing={10} mt={3}>
                   <Stack
                     direction={{ base: 'column',}}
@@ -128,6 +111,22 @@ export default function LogIn({ authenticate }) {
                     justify={'space-around'}>
                     <Checkbox colorScheme='red' isRequired>Remember me</Checkbox>
                   </Stack>
+                  <br/>
+                  {error && (
+                  <Stack align={'center'}
+                   fontFamily='Arial' 
+                   mt={5} 
+                   mb={5} 
+                   bg="#ff5e5b" 
+                   rounded='10px' 
+                   p={3}
+                   >
+                    <Text color={'white'}>There was an error submiting the form:</Text>
+                    <Text color={'red'} fontSize={18}>
+                      <strong>{error.message}</strong>
+                    </Text>
+                  </Stack>
+                  )}
                   <Button
                     type="submit"
                     size="lg"
