@@ -15,20 +15,13 @@ nav {
 .logo img{width: 190px;}
 
 .iconTheme {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .authLink {
-  color: #ff7c7a;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-  padding: 0em;
   margin: 5px;
 }
 
-.authLink:hover {
-  color: #ff423d;
-}
 
 .nav-btn {
   font-family: inherit;

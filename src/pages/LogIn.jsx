@@ -57,18 +57,19 @@ export default function LogIn({ authenticate }) {
         display="gridColumn"
         columns={{ md: 2 }}
         spacing={{ base: 10, lg: 32 }}
-        py={{ base: 10, sm: 20, lg: 32 }}>
+        py={{ base: 10, sm: 20, lg: 32 }}
+        ml={100}>
         <Stack
          spacing={{ base: 10, md: 20 }} 
          h='561' w='400' 
          bgRepeat={'no-repeat'} 
          backgroundImage={`url(${ImageBackground})`}/>
-        <Stack m={'60px'}>
+        <Stack ml={-50} mr={200}>
           <Stack  spacing={4}>
             <Heading 
             lineHeight={1.1}
             fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>
-            Sign in
+            Log in
             <Text
             as={'span'}
             bgGradient="linear(to-r, red.400,pink.400)"
@@ -102,14 +103,25 @@ export default function LogIn({ authenticate }) {
                     required
                     minLength="8"
                   />
+                  <br/>
+
                   {error && (
-                  <Stack className="error-block">
-                    <Text>There was an error submiting the form:</Text>
-                    <Text>{error.message}</Text>
+                  <Stack align={'center'}
+                   fontFamily='Arial' 
+                   mt={5} 
+                   mb={5} 
+                   bg="#ff5e5b" 
+                   rounded='10px' 
+                   pt={3}
+                   pb={3}>
+                    <Text color={'white'}>There was an error submiting the form:</Text>
+                    <Text color={'red'} fontSize={18}>
+                      <strong>{error.message}</strong>
+                    </Text>
                   </Stack>
                   )}
-
-                <Stack spacing={10}>
+                    
+                <Stack spacing={10} mt={3}>
                   <Stack
                     direction={{ base: 'column',}}
                     align={'start'}
@@ -125,12 +137,6 @@ export default function LogIn({ authenticate }) {
                     Sign in
                   </Button>
                 </Stack>
-              {/*{error && (
-                <div className="error-block">
-                  <p>There was an error submiting the form:</p>
-                  <p>{error.message}</p>
-                </div>
-              )}*/}
               </form>
             </Stack>
           </Box>

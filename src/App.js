@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Form } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
 import { getLoggedIn, logout } from "./services/auth";
@@ -12,6 +12,7 @@ import About from "./pages/About";
 import TracingList from "./pages/TracingList";
 import TracingDetails from "./pages/TracingDetails";
 import EditTracking from "./pages/EditTracking";
+
 
 
 export default function App() {
@@ -61,9 +62,6 @@ export default function App() {
     <div className="App">
       <Navbar handleLogout={handleLogout} user={user} />
       <Routes>
-        {/*{routes({ user, authenticate, handleLogout }).map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-        ))}*/}
         <Route path="/" element={<HomePage />} />
         <Route
          path="/auth/signup"

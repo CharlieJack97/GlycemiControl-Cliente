@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AddTracking from "../components/AddTracking";
 import TracingCard from "../components/TracingCard";
-import { Box, SimpleGrid } from "@chakra-ui/react";
-import './tracing.css'
+import { Heading, SimpleGrid } from "@chakra-ui/react";
+//import SearchComponent from "../components/SearchComponent";
+
 
 const API_URL = "http://localhost:5005";
 
@@ -19,17 +20,16 @@ export default function TracingList() {
   };
 
 
-  useEffect(() => {
-    getAllTracing();
-  }, [] );
+  useEffect(() => getAllTracing(), [] );
 
   
   return (
-    <div className="TracingList">
-
+    <div>
+      {/*<SearchComponent/>*/}
       <AddTracking refreshTracing={getAllTracing}/>
+      <Heading textAlign={'center'}>Tracking List</Heading>
       <SimpleGrid columns={3} margin={'20px'}>
-        {tracing.map((tracing) => {
+        {tracing.map(tracing => {
           return (
               <TracingCard key={tracing._id} {...tracing}/>
           );

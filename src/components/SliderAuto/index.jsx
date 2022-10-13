@@ -7,7 +7,6 @@ import {
   Heading,
   Text,
   Container,
-  useColorModeValue,
 } from '@chakra-ui/react';
 import Slider from 'react-slick';
 
@@ -70,7 +69,8 @@ export default function SliderAuto() {
       position={'relative'}
       height={'450px'}
       width={'full'}
-      overflow={'hidden'}>
+      overflow={'hidden'}
+      mt={10}>
       {/* CSS files for react-slick */}
       <link
         rel="stylesheet"
@@ -129,26 +129,26 @@ export default function SliderAuto() {
                 transform="translate(0, -50%)">
                 <Box 
                   className='bgText' 
-                  bg='#1a202c5d' 
+                  bg='#1a202c75' 
                   p='20px' 
                   rounded='20px'>
                   <Heading 
-                    color='white' 
-                    fontSize={{
-                       base: '3xl', 
-                       md: '4xl', 
-                       lg: '5xl' 
-                       }}>
+                   color='white' 
+                   fontSize={{
+                   base: '3xl', 
+                   md: '4xl', 
+                   lg: '5xl' 
+                   }}>
                     {card.title}
                   </Heading>
                   <Text
                    fontSize={{
-                     base: 'md', 
-                     lg: 'lg' 
-                     }} 
-                     color='gray.100'
-                     fontStyle='italic' 
-                     shadow='-moz-initial'>
+                    base: 'md', 
+                    lg: 'lg' 
+                   }} 
+                   color='gray.100'
+                   fontStyle='italic' 
+                   shadow='-moz-initial'>
                     <strong>{card.text}</strong>
                   </Text>
                 </Box>

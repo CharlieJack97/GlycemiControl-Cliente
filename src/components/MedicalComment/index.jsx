@@ -81,7 +81,11 @@ const AvatarDr = ({
 export default function MedicalComment() {
   return (
     <Box >
-      <Container maxW={'7xl'} paddingTop={10} as={Stack} spacing={12}>
+      <Container
+       maxW={'7xl'} 
+       paddingTop={10} 
+       as={Stack} 
+       spacing={12}>
         <Stack spacing={0} align={'center'}>
           <Heading>Advice from some Specialists</Heading>
         </Stack>

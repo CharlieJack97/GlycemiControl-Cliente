@@ -2,13 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import { Button } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react';
 
 const Navbar = (props) => {
   
   return (
     <nav>
-       <div className="logo"><a href="/" title="Home"><img src="./logo2.png"/></a></div>
+       <Box className="logo"><Link to="/" title="Home"><img src="./logo2.png"/></Link></Box>
        <div>
          <ColorModeSwitcher colorScheme='red' className="iconTheme"/>
          <Link to={'/'} className="authLink">
@@ -21,17 +28,24 @@ const Navbar = (props) => {
             MyIllness
           </Button>
          </Link>
-         {props.user ? (
-           <>
-             <Link to={'/tracing'} className="authLink">
+       
+          
+        {props.user ?(
+          <>
+          <Link to={'/tracing'} className='authLink'>
               <Button colorScheme='red' variant='ghost'>
-                Tracking
+                Tracing
               </Button>
              </Link>
-              <Button className="nav-btn" onClick={props.handleLogout}>
-                Logout
-              </Button>
-           </>
+            <Menu>
+              <MenuButton className="authLink" as={Button} colorScheme='red'>
+                {props.user?.username}
+              </MenuButton>
+              <MenuList>
+                  <MenuItem><button onClick={props.handleLogout}>Logout</button></MenuItem>
+              </MenuList>
+            </Menu>
+          </>
          ) : (
            <>
              <Link to={'/auth/signup'} className="authLink">

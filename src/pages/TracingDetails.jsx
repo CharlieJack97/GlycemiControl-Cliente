@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import { Box, Button, Text, Divider, Heading, Stack } from "@chakra-ui/react";
+import {
+   Box, 
+   Button, 
+   Divider, 
+   Text, 
+   Heading, 
+   Stack, 
+   Highlight, 
+   useColorModeValue 
+  } from "@chakra-ui/react";
 
 const API_URL = "http://localhost:5005"; 
  
@@ -21,7 +30,7 @@ export default function TracingDetails (props) {
       .catch(error => console.log(error));
   };
 
-  useEffect(()=>getTracing(), [] );
+  useEffect(()=>getTracing(), []);
  
   
   return (
@@ -44,16 +53,31 @@ export default function TracingDetails (props) {
               md: '40%',
             }}
             textAlign={'center'}>
-            <Heading>
+            <Heading mb={5}>
+              <Highlight
+                query='Tracking Details'
+                styles={{ px: '2', py: '1', rounded: 'full', bg:useColorModeValue('#ff8280', '#ff5e5b') }}
+              >
               Tracking Details
+              </Highlight>
             </Heading>
 
             <Divider />
 
       {tracing && (
         <>
-          <Heading as='h4' size='md' p={'20px'}>{tracing.title}</Heading>
-          <Heading as='h5' size='sm' p={'20px'}>{tracing.description}</Heading>
+          <>
+            <Heading as='h3' size='md' p={'5px'}>Glycemic:</Heading>
+            <Text>{tracing.glycemic} mmol/l</Text>
+          </>
+          <>
+            <Heading as='h3' size='sm' pt={10}>Symptom:</Heading>
+            <Text>{tracing.symptom}</Text>
+          </>
+          <>
+            <Heading as='h3' size='sm' pt={10}>Possible causes of imbalance:</Heading>
+            <Text>{tracing.cause}</Text>
+          </>
         </>
       )}
 
@@ -61,7 +85,7 @@ export default function TracingDetails (props) {
  
       <Stack display={''} p={5} ml={20}>
         <Link to="/tracing">
-          <Button>Back to tracing</Button>
+          <Button mr={10}>Back to tracing</Button>
         </Link>
         <Link to={`/tracing/edit/${id}`}>
           <Button colorScheme={'red'}>Edit</Button>

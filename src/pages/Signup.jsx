@@ -15,8 +15,6 @@ import {
   SimpleGrid,
   InputRightElement,
   InputGroup,
-  InputRightAddon,
-  HStack,
 } from '@chakra-ui/react';
 import ImageBackground from '../images/imageBackground.png'
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
@@ -25,12 +23,10 @@ export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
     email: '',
-    weight: '',
-    age: '',
     password: "",
   });
 
-  const { username, email, weight, age, password } = form;
+  const { username, email, password } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false)
@@ -46,8 +42,6 @@ export default function Signup({ authenticate }) {
     const credentials = {
       username,
       email,
-      weight,
-      age,
       password,
     };
     signup(credentials).then((res) => {
@@ -73,13 +67,14 @@ export default function Signup({ authenticate }) {
         display="gridColumn"
         columns={{ md: 2 }}
         spacing={{ base: 10, lg: 32 }}
-        py={{ base: 10, sm: 20, lg: 32 }}>
+        py={{ base: 10, sm: 20, lg: 32 }}
+        ml={100}>
         <Stack
          spacing={{ base: 10, md: 20 }} 
          h='561' w='400' 
          bgRepeat={'no-repeat'} 
          backgroundImage={`url(${ImageBackground})`}/>
-        <Stack m={'60px'}>
+        <Stack ml={-50} mr={200}>
           <Stack  spacing={4}>
             <Heading 
             lineHeight={1.1}
@@ -134,10 +129,19 @@ export default function Signup({ authenticate }) {
                     minLength="8"
                   />
                   {error && (
-                    <div className="error-block">
-                      <p>There was an error submiting the form:</p>
-                      <p>{error.message}</p>
-                    </div>
+                  <Stack align={'center'}
+                   fontFamily='Arial' 
+                   mt={5} 
+                   mb={5} 
+                   bg="#ff5e5b" 
+                   rounded='10px' 
+                   pt={3}
+                   pb={3}>
+                    <Text color={'white'}>There was an error submiting the form:</Text>
+                    <Text color={'red'} fontSize={18}>
+                      <strong>{error.message}</strong>
+                    </Text>
+                  </Stack>
                   )}
                   <InputRightElement width='4.5rem'>
                     <Button h='1.75rem' size='sm' onClick={handleClick}>
@@ -145,36 +149,6 @@ export default function Signup({ authenticate }) {
                     </Button>
                   </InputRightElement>
                 </InputGroup>
-                <HStack>
-                  <FormLabel isRequired>Weight</FormLabel>
-                  <InputGroup>
-                    <Input
-                      type={'number'} 
-                      name={"weight"}
-                      required
-                      value={weight}
-                      onChange={handleInputChange}
-                      mt={5}
-                      placeholder={'0'}
-                      ml={-2}
-                      
-                    />
-                    <InputRightAddon mt={5} mr={2} children={'Kg'}/>
-                  </InputGroup>
-                  <FormLabel isRequired >Age</FormLabel>
-                  <InputGroup>
-                    <Input
-                     type={'number'}
-                     name={"age"} 
-                     required 
-                     onChange={handleInputChange}
-                     placeholder={'0'}
-                     value={age}
-                     mt={5}
-                    />  
-                  </InputGroup>
-                </HStack>
-
                 <Button
                   type="submit"
                   size="lg"

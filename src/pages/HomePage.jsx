@@ -14,7 +14,7 @@ import AboutControl from '../components/AboutControl';
 export default function HomePage(props) {
   return (
     <Container maxW={'5xl'}>
-      <SliderAuto />
+      <SliderAuto/>
       <Stack
         textAlign={'center'}
         align={'center'}
@@ -49,10 +49,8 @@ export default function HomePage(props) {
                   Learn more
               </Button>
             </Link>
-          </Stack>
-          <Stack>
+          </Stack> 
         <AboutControl/>
-        </Stack>
         <MedicalComment/> 
       </Stack>
       <Footer/>
