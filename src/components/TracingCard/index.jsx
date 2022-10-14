@@ -33,7 +33,7 @@ export default function TracingCard ( { glycemic, symptom, cause, _id, time } ) 
               fontSize={'2xl'}
               fontFamily={'arial'}
               fontWeight={500}>
-              blood glucose: <strong>{glycemic}</strong> mmol/l of regular insulin
+              blood glucose: <strong>{glycemic}</strong> mmol/l
             </Heading>
             <Spacer/>
             <Divider />
