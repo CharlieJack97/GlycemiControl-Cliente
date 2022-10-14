@@ -170,6 +170,8 @@ export default function AddTracking(props) {
                     value={symptom}
                     isRequired
                     onChange={(e) => setSymptom(e.target.value)}
+                    overflow='hidden'
+                    textOverflow={'ellipsis'}
                   />
                 <FormLabel>Possible causes of imbalance:</FormLabel>
                   <Textarea
@@ -192,9 +194,9 @@ export default function AddTracking(props) {
                      rounded={'10px'} 
                      p={1}>
                       <strong>
-                        Only administer if blood glucose
+                        Administer Regular Insulin 'Only' if blood glucose
                         <br/>
-                        greater than or equal to
+                        is greater than or equal to
                         <br/>
                         12 mmol/l
                       </strong>
@@ -220,10 +222,10 @@ export default function AddTracking(props) {
                       </NumberInput>
                       <InputRightAddon children={'mmol/l'} mr={5}/>
                     </InputGroup>
-                    <Text textAlign={'center'} w={'70%'}>
-                      Administer 
-                      <strong>{calc(glycemic)}</strong> 
-                      units
+                    <Text fontFamily={'Arial'} color={'red.900'} textAlign={'center'} w={'70%'}>
+                    <strong>Administer 
+                      {' '}<mark>{calc(glycemic)}</mark>{' '}
+                      units</strong>
                     </Text>
                 </Stack>
                   <Button m={'20px'} type="submit" colorScheme="red" size="md">

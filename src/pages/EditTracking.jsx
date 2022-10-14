@@ -1,7 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { Button, Box, FormControl, FormLabel, Input, Textarea, Stack, Highlight, Heading, useColorModeValue } from "@chakra-ui/react";
+import {
+   Button, 
+   Box, 
+   FormControl, 
+   FormLabel, 
+   Input, 
+   Textarea, 
+   Stack, 
+   Highlight, 
+   Heading, 
+   useColorModeValue 
+  } from "@chakra-ui/react";
  
 const API_URL = "http://localhost:5005";
  
@@ -88,8 +99,8 @@ export default function EditTracking(props) {
             onChange={(e) => setCause(e.target.value)}
 
           />
-          <Stack align={'end'}>
-            <Button ><Link to={`/tracing/${id}`}>Back to Details</Link></Button>
+          <Stack mb={10} align={'center'}>
+            <Button mt={5}><Link to={`/tracing/${id}`}>Back to Details</Link></Button>
             <Button type="submit" value="Submit" >Update</Button>
             <Button colorScheme={'red'}  onClick={deleteTracking}>Delete Tracking</Button>
           </Stack>
